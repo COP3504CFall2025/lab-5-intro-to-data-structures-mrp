@@ -42,12 +42,14 @@ public:
 
 	// Insertion
 	void AddHead(const T& data){
-		Node* newNode = new Node(data, head, nullptr);
+		Node* newNode = new Node(data);
+		newNode->next = head;
 		head->prev = newNode;
 		head = newNode;
 	}
 	void AddTail(const T& data){
-		Node* newNode = new Node(data, nullptr, tail);
+		Node* newNode = new Node(data);
+		newNode->prev = tail;
 		tail->next = newNode;
 		tail = newNode;
 	}
