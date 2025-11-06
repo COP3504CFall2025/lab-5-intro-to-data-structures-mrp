@@ -113,17 +113,67 @@ public:
 		
 		return true;
 	}
-	void Clear();
+	void Clear(){
+		while (count<0){
+			RemoveTail();
+		}
+	}
 
 	// Operators
-	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept;
-	LinkedList<T>& operator=(const LinkedList<T>& rhs);
+	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept{
+		if (this==&rhs) return *this;
+		Clear();
+
+		head = other.getHead();
+		tail = other.getTail();
+		count = other.getCount();
+
+		other.Clear();
+
+	}
+	LinkedList<T>& operator=(const LinkedList<T>& rhs){
+
+		if (this==&rhs) return *this;
+
+		Clear();
+		Node* curr = rhs.getHead();
+		
+    	while (curr){
+        	AddTail(curr->data);
+        	curr = curr->next;
+    	}
+
+		return *this;
+	}
 
 	// Construction/Destruction
-	LinkedList();
-	LinkedList(const LinkedList<T>& list);
-	LinkedList(LinkedList<T>&& other) noexcept;
-	~LinkedList();
+	LinkedList(){
+		head = nullptr;
+		tail = nullptr;
+		count = 0;
+	}
+	LinkedList(const LinkedList<T>& list){
+		head = nullptr;
+		tail = nullptr;
+		count = 0;
+		
+		Node* curr = list.getHead();
+		
+    	while (curr){
+        	AddTail(curr->data);
+        	curr = curr->next;
+    	}
+	}
+	LinkedList(LinkedList<T>&& other) noexcept{
+		head = other.getHead();
+		tail = other.getTail();
+		count = other.getCount();
+
+		other.Clear();
+	}
+	~LinkedList(){
+		Clear();
+	}
 
 private:
 	// Stores pointers to first and last nodes and count
