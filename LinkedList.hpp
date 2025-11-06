@@ -17,7 +17,7 @@ public:
 	};
 
 	// Behaviors
-	void PrintForward() const{
+	void printForward() const{
 		Node* curr = head;
     	while (curr){
         	std::cout << curr->data << std::endl;
@@ -42,7 +42,7 @@ public:
 
 	// Insertion
 	void AddHead(const T& data){
-		Node* newNode = new Node(data, head);
+		Node* newNode = new Node(data, head, nullptr);
 		head->prev = newNode;
 		head = newNode;
 	}
