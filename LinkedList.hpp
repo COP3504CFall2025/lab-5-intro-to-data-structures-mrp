@@ -13,11 +13,11 @@ public:
 		Node* next;
 		Node* prev;
 
-		//Node(const T& data) : data(data), next(nullptr), prev(nullptr) {}
+		Node(const T& data) : data(data), next(nullptr), prev(nullptr) {}
 	};
-	
+
 	// Behaviors
-	void printForward() const{
+	void PrintForward() const{
 		Node* curr = head;
     	while (curr){
         	std::cout << curr->data << std::endl;
@@ -25,7 +25,7 @@ public:
     	}
 	}
 
-	void printReverse() const{
+	void PrintReverse() const{
 		Node* curr = tail;
 		while (curr){
 			std::cout << curr->data << std::endl;
@@ -41,12 +41,20 @@ public:
 	const Node* getTail() const;
 
 	// Insertion
-	void addHead(const T& data);
-	void addTail(const T& data);
+	void AddHead(const T& data){
+		Node* newNode = new Node(data, head);
+		head->prev = newNode;
+		head = newNode;
+	}
+	void AddTail(const T& data){
+		Node* newNode = new Node(data, nullptr, tail);
+		tail->next = newNode;
+		tail = newNode;
+	}
 
 	// Removal
-	bool removeHead();
-	bool removeTail();
+	bool RemoveHead();
+	bool RemoveTail();
 	void Clear();
 
 	// Operators
