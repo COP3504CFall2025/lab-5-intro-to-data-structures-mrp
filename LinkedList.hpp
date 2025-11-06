@@ -34,29 +34,85 @@ public:
 	}
 
 	// Accessors
-	[[nodiscard]] unsigned int getCount() const;
-	Node* getHead();
-	const Node* getHead() const;
-	Node* getTail();
-	const Node* getTail() const;
+	[[nodiscard]] unsigned int getCount() const{
+		return count;
+	}
+	Node* getHead(){
+		return head;
+	}
+	const Node* getHead() const{
+		return head;
+	}
+	Node* getTail(){
+		return tail;
+	}
+	const Node* getTail() const{
+		return tail;
+	}
 
 	// Insertion
 	void AddHead(const T& data){
 		Node* newNode = new Node(data);
-		newNode->next = head;
-		head->prev = newNode;
+		if (head){
+			newNode->next = head;
+			head->prev = newNode;
+		} else {
+			tail = newNode;
+		}
+
 		head = newNode;
+		
+		count++;
 	}
 	void AddTail(const T& data){
 		Node* newNode = new Node(data);
-		newNode->prev = tail;
-		tail->next = newNode;
+		if (tail){
+			newNode->prev = tail;
+			tail->next = newNode;
+		} else {
+			head = newNode;
+		}
+		
 		tail = newNode;
+
+		count++;
 	}
 
 	// Removal
-	bool RemoveHead();
-	bool RemoveTail();
+	bool RemoveHead(){
+		if (!head) return false;
+		Node* temp = head;
+		if (head == tail) {
+			head == nullptr
+			tail == nullptr;
+		} else {
+			head = head->next;
+			head->prev = nullptr;
+		}
+
+		delete temp;
+		count--;
+		
+		return true;
+	}
+	bool RemoveTail(){
+		if (!tail) return false;
+
+		Node* temp = tail;
+
+		if (tail == head) {
+			tail == nullptr
+			head == nullptr;
+		} else {
+			tail = tail->prev;
+			tail->next = nullptr;
+		}
+
+		delete temp;
+		count--;
+		
+		return true;
+	}
 	void Clear();
 
 	// Operators
