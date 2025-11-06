@@ -7,6 +7,14 @@ using namespace std;
 template <typename T>
 class LinkedList {
 public:
+
+	struct Node {
+		T data;
+		Node* next;
+		Node* prev;
+
+		//Node(const T& data) : data(data), next(nullptr), prev(nullptr) {}
+	};
 	// Behaviors
 	void printForward() const;
 	void printReverse() const;
