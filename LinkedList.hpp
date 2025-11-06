@@ -83,8 +83,8 @@ public:
 		if (!head) return false;
 		Node* temp = head;
 		if (head == tail) {
-			head == nullptr;
-			tail == nullptr;
+			head = nullptr;
+			tail = nullptr;
 		} else {
 			head = head->next;
 			head->prev = nullptr;
@@ -101,8 +101,8 @@ public:
 		Node* temp = tail;
 
 		if (tail == head) {
-			tail == nullptr;
-			head == nullptr;
+			tail = nullptr;
+			head = nullptr;
 		} else {
 			tail = tail->prev;
 			tail->next = nullptr;
