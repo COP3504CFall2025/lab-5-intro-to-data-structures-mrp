@@ -15,9 +15,23 @@ public:
 
 		//Node(const T& data) : data(data), next(nullptr), prev(nullptr) {}
 	};
+	
 	// Behaviors
-	void printForward() const;
-	void printReverse() const;
+	void printForward() const{
+		Node* curr = head;
+    	while (curr){
+        	std::cout << curr->data << std::endl;
+        	curr = curr->next;
+    	}
+	}
+
+	void printReverse() const{
+		Node* curr = tail;
+		while (curr){
+			std::cout << curr->data << std::endl;
+			curr = curr->prev;
+		}
+	}
 
 	// Accessors
 	[[nodiscard]] unsigned int getCount() const;
