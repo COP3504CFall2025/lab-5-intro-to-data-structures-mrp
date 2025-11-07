@@ -26,24 +26,24 @@ public:
         array_ = new T[capacity_];
         curr_size_ = other.curr_size_;
 
-        for(int i = 0; i < curr_size_; i++){
+        for(size_t i = 0; i < curr_size_; i++){
             array_[i] = other.array_[i];
         }
         
     }
     ABS& operator=(const ABS& rhs){
 
-        if(this = &rhs) return *this;
+        if(this == &rhs) return *this;
 
-        T* new_arr =  new T[other.capacity_];
+        T* new_arr =  new T[rhs.capacity_];
         delete[] array_;
 
         array_ = new_arr;
         capacity_ = rhs.capacity_;
         curr_size_ = rhs.curr_size_;
 
-        for(int i = 0; i < curr_size_; i++){
-            array_[i] = other.array_[i];
+        for(size_t i = 0; i < curr_size_; i++){
+            array_[i] = rhs.array_[i];
         } 
 
         return *this;
@@ -60,7 +60,7 @@ public:
 
     }
     ABS& operator=(ABS&& rhs) noexcept{
-        if(this = &rhs) return *this;
+        if(this == &rhs) return *this;
 
         delete[] array_;
 
