@@ -98,7 +98,7 @@ public:
     // Push item onto the stack
     void push(const T& data) override{
         if (curr_size_==capacity_){
-            capacity_*=2;
+            capacity_*=scale_factor_;
             T* newArr = new T[capacity_];
             for (size_t i = 0; i < curr_size_; i++){
                 newArr[i] = array_[i];
@@ -119,6 +119,18 @@ public:
     T pop() override{
         if (curr_size_ == 0) throw std::runtime_error("Stack empty");
         curr_size_--;
+
+        if(capacity_/scale_factor_<=curr_size_){
+            capacity_/=scale_factor_;
+            T* newArr = new T[capacity_];
+            for (size_t i = 0; i < curr_size_; i++){
+                newArr[i] = array_[i];
+            }
+
+            delete[] array_;
+            array_ = newArr;
+        }
+
         return array_[curr_size_];
     }
 
