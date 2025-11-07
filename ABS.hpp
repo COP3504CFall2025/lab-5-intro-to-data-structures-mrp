@@ -112,7 +112,8 @@ public:
     }
 
     T peek() const override{
-        return array_[curr_size_];
+        
+        return array_[curr_size_-1];
     }
 
     T pop() override{
