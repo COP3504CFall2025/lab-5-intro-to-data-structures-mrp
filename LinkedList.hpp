@@ -114,14 +114,14 @@ public:
 		return true;
 	}
 	void Clear(){
-		while (count<0){
+		while (count>0){
 			RemoveTail();
 		}
 	}
 
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept{
-		if (this==&rhs) return *this;
+		if (this==&other) return *this;
 		Clear();
 
 		head = other.getHead();
@@ -129,14 +129,14 @@ public:
 		count = other.getCount();
 
 		other.Clear();
-
+		return *this;
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs){
 
 		if (this==&rhs) return *this;
 
 		Clear();
-		Node* curr = rhs.getHead();
+		const Node* curr = rhs.getHead();
 		
     	while (curr){
         	AddTail(curr->data);
@@ -157,7 +157,7 @@ public:
 		tail = nullptr;
 		count = 0;
 		
-		Node* curr = list.getHead();
+		const Node* curr = list.getHead();
 		
     	while (curr){
         	AddTail(curr->data);
