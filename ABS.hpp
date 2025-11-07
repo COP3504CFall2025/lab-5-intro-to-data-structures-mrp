@@ -21,11 +21,64 @@ public:
         curr_size_ = 0;
         array_ = new T[capacity_];
     }
-    ABS(const ABS& other);
-    ABS& operator=(const ABS& rhs);
-    ABS(ABS&& other) noexcept;
-    ABS& operator=(ABS&& rhs) noexcept;
-    ~ABS() noexcept override;
+    ABS(const ABS& other){
+        capacity_ = other.capacity_;
+        array_ = new T[capacity_];
+        curr_size_ = other.curr_size_;
+
+        for(int i = 0; i < curr_size_; i++){
+            array_[i] = other.array_[i];
+        }
+        
+    }
+    ABS& operator=(const ABS& rhs){
+
+        if(this = &rhs) return *this;
+
+        T* new_arr =  new T[other.capacity_];
+        delete[] array_;
+
+        array_ = new_arr;
+        capacity_ = rhs.capacity_;
+        curr_size_ = rhs.curr_size_;
+
+        for(int i = 0; i < curr_size_; i++){
+            array_[i] = other.array_[i];
+        } 
+
+        return *this;
+
+    }
+    ABS(ABS&& other) noexcept{
+        capacity_ = other.capacity_;
+        array_ = other.array_;
+        curr_size_ = other.curr_size_;
+
+        other.capacity_ = 1;
+        other.array_ = nullptr;
+        other.curr_size_ = 0;
+
+    }
+    ABS& operator=(ABS&& rhs) noexcept{
+        if(this = &rhs) return *this;
+
+        delete[] array_;
+
+        capacity_ = other.capacity_;
+        array_ = other.array_;
+        curr_size_ = other.curr_size_;
+
+        other.capacity_ = 1;
+        other.array_ = nullptr;
+        other.curr_size_ = 0;
+
+        return *this;
+
+    }
+    ~ABS() noexcept override{
+        delete[] array_;
+        array_ = nullptr;
+    }
 
     // Get the number of items in the ABS
     [[nodiscard]] size_t getSize() const noexcept override{
