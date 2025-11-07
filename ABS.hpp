@@ -64,13 +64,13 @@ public:
 
         delete[] array_;
 
-        capacity_ = other.capacity_;
-        array_ = other.array_;
-        curr_size_ = other.curr_size_;
+        capacity_ = rhs.capacity_;
+        array_ = rhs.array_;
+        curr_size_ = rhs.curr_size_;
 
-        other.capacity_ = 1;
-        other.array_ = nullptr;
-        other.curr_size_ = 0;
+        rhs.capacity_ = 1;
+        rhs.array_ = nullptr;
+        rhs.curr_size_ = 0;
 
         return *this;
 
