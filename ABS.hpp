@@ -121,7 +121,7 @@ public:
         curr_size_--;
         T val = array_[curr_size_];
 
-        if(curr_size_ <= capacity_/scale_factor_){
+        if(curr_size_ < capacity_/scale_factor_){
             capacity_/=scale_factor_;
             T* newArr = new T[capacity_];
             for (size_t i = 0; i < curr_size_; i++){
