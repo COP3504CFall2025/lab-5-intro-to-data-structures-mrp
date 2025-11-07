@@ -100,7 +100,7 @@ public:
         if (curr_size_==capacity_){
             capacity_*=2;
             T* newArr = new T[capacity_];
-            for (int i = 0; i < curr_size_; i++){
+            for (size_t i = 0; i < curr_size_; i++){
                 newArr[i] = array_[i];
             }
 
@@ -117,7 +117,7 @@ public:
 
     T pop() override{
         curr_size_--;
-        return array_[curr_size_+1];
+        return array_[curr_size_];
     }
 
 private:
