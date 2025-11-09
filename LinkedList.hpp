@@ -25,7 +25,7 @@ public:
     	}
 	}
 
-	void PrintReverse() const{
+	void printReverse() const{
 		Node* curr = tail;
 		while (curr){
 			std::cout << curr->data << std::endl;
@@ -51,7 +51,7 @@ public:
 	}
 
 	// Insertion
-	void AddHead(const T& data){
+	void addHead(const T& data){
 		Node* newNode = new Node(data);
 		if (head){
 			newNode->next = head;
@@ -64,7 +64,7 @@ public:
 		
 		count++;
 	}
-	void AddTail(const T& data){
+	void addTail(const T& data){
 		Node* newNode = new Node(data);
 		if (tail){
 			newNode->prev = tail;
@@ -79,7 +79,7 @@ public:
 	}
 
 	// Removal
-	bool RemoveHead(){
+	bool removeHead(){
 		if (!head) return false;
 		Node* temp = head;
 		if (head == tail) {
@@ -95,7 +95,7 @@ public:
 		
 		return true;
 	}
-	bool RemoveTail(){
+	bool removeTail(){
 		if (!tail) return false;
 
 		Node* temp = tail;
@@ -113,16 +113,16 @@ public:
 		
 		return true;
 	}
-	void Clear(){
+	void clear(){
 		while (count>0){
-			RemoveTail();
+			removeTail();
 		}
 	}
 
 	// Operators
 	LinkedList<T>& operator=(LinkedList<T>&& other) noexcept{
 		if (this==&other) return *this;
-		Clear();
+		clear();
 
 		head = other.getHead();
 		tail = other.getTail();
@@ -135,11 +135,11 @@ public:
 
 		if (this==&rhs) return *this;
 
-		Clear();
+		clear();
 		const Node* curr = rhs.getHead();
 		
     	while (curr){
-        	AddTail(curr->data);
+        	addTail(curr->data);
         	curr = curr->next;
     	}
 
@@ -160,7 +160,7 @@ public:
 		const Node* curr = list.getHead();
 		
     	while (curr){
-        	AddTail(curr->data);
+        	addTail(curr->data);
         	curr = curr->next;
     	}
 	}
@@ -169,10 +169,10 @@ public:
 		tail = other.getTail();
 		count = other.getCount();
 
-		other.Clear();
+		other.clear();
 	}
 	~LinkedList(){
-		Clear();
+		clear();
 	}
 
 private:
