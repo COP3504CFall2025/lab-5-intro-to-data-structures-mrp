@@ -132,7 +132,7 @@ public:
         
 
         T* newArr = new T[capacity_];
-        for (size_t i = 0; i < curr_size_+1 < i++){
+        for (size_t i = 0; i < curr_size_+1; i++){
             newArr[i] = array_[i+1];
         }
         array_ = newArr;
