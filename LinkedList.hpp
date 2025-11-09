@@ -128,7 +128,7 @@ public:
 		tail = other.getTail();
 		count = other.getCount();
 
-		other.Clear();
+		other.clear();
 		return *this;
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs){
