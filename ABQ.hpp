@@ -117,17 +117,14 @@ public:
     // Deletion
     T dequeue() override{
         if (curr_size_ == 0) throw std::runtime_error("Stack empty");
-
         
+        T val = array_[0];
 
-        
-
-        T* newArr = new T[capacity_];
-        for (size_t i = 0; i < curr_size_+1; i++){
-            newArr[i] = array_[i+1];
+       
+        for (size_t i = 1; i < curr_size_; i++){
+            array_[i-1] = array_[i];
         }
-        delete[] array_;
-        array_ = newArr;
+        
 
         curr_size_--;
 
@@ -143,7 +140,7 @@ public:
         }
 
 
-        return array_[0];
+        return val;
     }
 
 };
