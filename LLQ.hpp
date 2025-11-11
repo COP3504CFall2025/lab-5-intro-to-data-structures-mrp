@@ -11,7 +11,7 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLQ();
+    LLQ(){}
 
     // Insertion
     void enqueue(const T& item) override{
