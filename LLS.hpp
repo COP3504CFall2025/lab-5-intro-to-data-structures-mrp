@@ -22,15 +22,16 @@ public:
 
     // Deletion
     T pop() override{
-        Node* head = list.getHead();
+        T head_data = list.getHead()->data;
         if (list.removeHead()){
-            return head->data;
+            return head_data;
         } else throw std::runtime_error("Stack empty");
     }
 
     // Access
     T peek() const override{
-        list.getHead()->data;
+        if (getSize()==0) throw std::runtime_error("Stack empty");
+        return list.getHead()->data;
     }
 
     //Getters
