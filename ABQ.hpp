@@ -110,13 +110,13 @@ public:
 
     // Access
     T peek() const override{
-        if (curr_size_ == 0) throw std::runtime_error("Stack empty");
+        if (curr_size_ == 0) throw std::runtime_error("Queue empty");
         return array_[0];
     }
 
     // Deletion
     T dequeue() override{
-        if (curr_size_ == 0) throw std::runtime_error("Stack empty");
+        if (curr_size_ == 0) throw std::runtime_error("Queue empty");
         
         T val = array_[0];
 
