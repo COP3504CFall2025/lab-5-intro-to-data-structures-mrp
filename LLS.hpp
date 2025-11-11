@@ -12,7 +12,7 @@ private:
 public:
     // Constructor
     LLS(){
-        list = LinkedList();
+        
     }
 
     // Insertion
@@ -22,15 +22,15 @@ public:
 
     // Deletion
     T pop() override{
-        T head = list.getHead();
+        Node* head = list.getHead();
         if (list.removeHead()){
-            return head;
+            return head->data;
         } else throw std::runtime_error("Stack empty");
     }
 
     // Access
     T peek() const override{
-        list.getHead();
+        list.getHead()->data;
     }
 
     //Getters
