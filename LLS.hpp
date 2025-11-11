@@ -22,10 +22,14 @@ public:
 
     // Deletion
     T pop() override{
+        
+        if (!list.getHead()) throw std::runtime_error("Stack empty");
+
         T head_data = list.getHead()->data;
-        if (list.removeHead()){
-            return head_data;
-        } else throw std::runtime_error("Stack empty");
+        
+        list.removeHead();
+        
+        return head_data;
     }
 
     // Access
