@@ -49,12 +49,12 @@ public:
     const T& front() const override{
         if (getSize()==0) throw std::runtime_error("Deque Empty");
 
-        return list.getHead();
+        return list.getHead()->data;
     }
     const T& back() const override{
         if (getSize()==0) throw std::runtime_error("Deque Empty");
 
-        return list.getTail();
+        return list.getTail()->data;
     }
 
     // Getter
