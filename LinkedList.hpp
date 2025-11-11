@@ -128,7 +128,9 @@ public:
 		tail = other.getTail();
 		count = other.getCount();
 
-		other.clear();
+		other.head = nullptr;
+		other.tail = nullptr;
+		other.count = 0;
 		return *this;
 	}
 	LinkedList<T>& operator=(const LinkedList<T>& rhs){
@@ -169,7 +171,9 @@ public:
 		tail = other.getTail();
 		count = other.getCount();
 
-		other.clear();
+		other.head = nullptr;
+		other.tail = nullptr;
+		other.count = 0;
 	}
 	~LinkedList(){
 		clear();
